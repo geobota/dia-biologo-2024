@@ -57,3 +57,76 @@ tidy_data_3 <-
     names_to = "preguta_uso",
     values_to = "uso"
   )
+
+
+prueba <-
+  parte_usada_data_long |>
+  # dplyr::filter(
+  #   # especie %in% vector_especies_principales,
+  #   uso != 0
+  # ) |>
+  dplyr::group_by(
+    sp_name,
+    parte
+  ) |>
+  dplyr::rename(
+    value = uso
+  ) |>
+  dplyr::summarise(
+    value = base::sum(value, na.rm = TRUE)
+  ) |>
+  dplyr::ungroup(
+  ) |>
+  dplyr::mutate(
+    percent = scales::percent(value / base::sum(value), accuracy = 0.01),
+    value = (value / base::sum(value)) * 100,
+    pollen = forcats::fct_reorder(sp_name, value)
+  )
+
+prueba |>
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = parte,
+      y = value,
+      label = percent
+    )
+  ) +
+  ggplot2::geom_bar(
+    stat = "identity",
+    fill = "#0072B2"
+  ) +
+  ggplot2::facet_wrap(
+    ~ base::factor(sp_name),
+    ncol = 2,
+    scales = "free_y",
+  ) +
+  ggplot2::theme_classic()
+
+
+parte_usada_percent <- parte_usada_data_long %>%
+  group_by(sp_name, parte) %>%
+  summarise(uso_total = sum(uso)) %>%
+  ungroup() %>%
+  group_by(sp_name) %>%
+  mutate(percentage = (uso_total / sum(uso_total)) * 100)
+
+# Crear el gráfico con ggplot
+ggplot(parte_usada_percent, aes(x = sp_name, y = percentage, fill = parte)) +
+  geom_bar(stat = "identity", position = "fill") +
+  coord_flip() +
+  labs(x = "Especies", y = "Porcentaje de uso", fill = "Parte de la planta") +
+  theme_minimal()
+
+parte_usada_percent <- parte_usada_data_long %>%
+  group_by(sp_name, parte) %>%
+  summarise(uso_total = sum(uso)) %>%
+  ungroup() %>%
+  group_by(sp_name) %>%
+  mutate(percentage = (uso_total / sum(uso_total)) * 100)
+
+# Crear el gráfico con ggplot y facet_wrap
+ggplot(parte_usada_percent, aes(x = parte, y = percentage)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~ sp_name) +
+  labs(x = "Uso de la planta", y = "Porcentaje de uso (%)") +
+  theme_minimal()

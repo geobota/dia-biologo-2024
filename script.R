@@ -53,15 +53,18 @@ temporal_data_02 <-
       numero == 9 ~ "papa criolla",
       numero == 11 ~ "jabuticaba",
       numero == 13 ~ "tomate chonto",
-      numero == 15 ~ "tomate variedad",
+      numero == 15 ~ "tomate amarillo",
       numero == 17 ~ "balazo",
       numero == 19 ~ "frijol cargamanto",
-      numero == 21 ~ "frijol variedad",
+      numero == 21 ~ "frijol petaco",
       .default = numero
     )
   ) |>
   dplyr::rename(
     sp_name = numero
+  ) |>
+  dplyr::arrange(
+    sp_name
   ) |>
   stats::na.omit()
 
@@ -74,12 +77,62 @@ ethnobotanyr_data <-
     values_from = valor,
     values_fill = 0
   ) |>
-  janitor::clean_names()
+  janitor::clean_names() |>
+  dplyr::select(
+    c(
+      "informant",
+      "sexo",
+      "edad",
+      "vinculo",
+      "sp_name",
+      "ensalada",
+      "sopas_o_guisos",
+      "bebidas",
+      "harinas_y_masas",
+      "salsas_o_condimentos",
+      "postre_o_dulce",
+      "fritos"
+    )
+  )
 
 
-ethnobotanyr_data |>
+porcentaje_especie <-
+  ethnobotanyr_data |>
+  janitor::tabyl(
+    sp_name
+  ) |>
+  dplyr::as_tibble() |>
+  dplyr::mutate(
+    value = percent,
+    percent = scales::percent(percent),
+    sp_name = forcats::fct_reorder(sp_name, n)
+  )
+
+#### Gráfico ----
+
+# fig-porcentaje-especie
+fig_porcentaje_especie <-
+  porcentaje_especie |>
   ggplot2::ggplot() +
   ggplot2::aes(
-    x = sp_name
+    x = sp_name,
+    y = value * 100,
+    label = percent
   ) +
-  ggplot2::geom_bar()
+  ggplot2::geom_bar(
+    stat = "identity",
+    fill = "#0072B2"
+  ) +
+  ggplot2::geom_text(
+    hjust = -0.1
+  ) +
+  # ggplot2::scale_y_continuous(labels = scales::label_percent()) +
+  ggplot2::coord_flip() +
+  ggplot2::labs(
+    x = NULL,
+    y = "Abundancia relativa (%)"
+  ) +
+  ggplot2::theme_classic() +
+  ggplot2::theme(
+    # axis.text.y = ggplot2::element_text(face = "italic")
+  )

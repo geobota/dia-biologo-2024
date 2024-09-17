@@ -1,0 +1,52 @@
+--- 
+title: "Algunos conocimientos sobre plantas "
+author: "Grupo de Estudios Botánicos GEOBOTA"
+format: 
+  dashboard:
+    logo: banner.png
+    scrolling: true
+    theme: cosmo
+---
+
+```{r}
+#| label: setup-1
+#| echo: false
+#| eval: true
+#| message: false
+#| output: false
+#| file: script.R
+```
+
+```{r}
+#| label: setup-2
+#| echo: false
+#| eval: true
+#| message: false
+#| output: false
+#| file: script_2.R
+```
+
+
+```{r}
+#| title: "Porcentaje de plantas conocidas"
+fig_porcentaje_especie
+```
+
+```{r}
+#| title: "Porcentaje de usos por planta"
+fig_parte_usada_percent
+```
+
+```{r}
+#| title: "Otra forma de visualizar los usos por planta"
+ethnobotanyR::ethnoChord(
+    parte_usada_data,
+    by = "sp_name"
+  )
+```
+
+<!-- :::{.card titel="¡Síguenos para estar al tanto de los resultados!"} -->
+
+<!-- ![](geobota-social_qr.png) -->
+
+<!-- ::: -->

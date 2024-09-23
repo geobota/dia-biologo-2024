@@ -1,0 +1,12 @@
+/*-- scss:defaults --*/
+
+// fonts
+@import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap';
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@700&display=swap');
+
+$font-family-sans-serif: "Atkinson Hyperlegible";
+
+// colors
+
+$link-color: #0072B2;
+$hover-color: lighten($link-color, 40%);

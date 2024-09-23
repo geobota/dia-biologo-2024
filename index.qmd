@@ -1,11 +1,23 @@
---- 
-title: "Algunos conocimientos sobre plantas "
-author: "Grupo de Estudios Botánicos GEOBOTA"
+---
+title: "Día del Biólogo 2024: Algunos conocimientos sobre plantas "
+# author: "Grupo de Estudios Botánicos GEOBOTA"
 format: 
   dashboard:
-    logo: banner.png
-    scrolling: true
-    theme: cosmo
+    logo: imagenes/banner.png
+    nav-buttons:
+      - text: "Grupo de Estudios Botánicos GEOBOTA"
+        href: http://geobota.github.io/
+      - icon: facebook
+        href: https://www.facebook.com/geobotaudea
+      - icon: instagram
+        href: https://www.instagram.com/geobotaudea/
+      - icon: github
+        href: https://github.com/geobota/dia-biologo-2024
+    # scrolling: true
+    # orientation: columns
+    theme: 
+      - cosmo
+      - custom.scss
 ---
 
 ```{r}
@@ -14,7 +26,7 @@ format:
 #| eval: true
 #| message: false
 #| output: false
-#| file: script.R
+#| file: scripts/manejo_datos.R
 ```
 
 ```{r}
@@ -23,30 +35,97 @@ format:
 #| eval: true
 #| message: false
 #| output: false
-#| file: script_2.R
+#| file: scripts/graficos.R
 ```
 
+```{r}
+#| label: setup-3
+#| echo: false
+#| eval: true
+#| message: false
+#| output: false
+#| file: scripts/tablas.R
+```
+
+# {.sidebar}
+
+**Presentación**
+
+En Colombia, cada 17 de septiembre se celebra el Día del Biólogo. Este año (2024), la [Facultad de Ciencias Exactas y Naturales](https://www.udea.edu.co/wps/portal/udea/web/inicio/unidades-academicas/ciencias-exactas-naturales) de la [Universidad de Antioquia](https://www.udea.edu.co) conmemoró la fecha con un evento titulado «[Muestra Biológica](https://www.instagram.com/p/DABawn0Ol2x/)». El evento consistió en una exhibición pública de los diferentes grupos de investigación del Instituto de Biología. Nosotros participamos con una exposición enfocada en la botánica, principalmente en aerobiología, arquitectura foliar y etnobotánica. Una de las actividades incluyó invitar a los asistentes a completar una breve encuesta sobre el conocimiento de algunas plantas y sus usos. Como resultado de esta actividad, se elaboró este Dashboard para presentar los resultados.
+
+**Invitación**
+
+Si deseas profundizar en el análisis de datos y su presentación en herramientas como esta, te invitamos a inscribirte en los cursos «[Etnobotánica Cuantitativa en R](https://geobota.github.io/xii-ccb-etnobotanica/)» e «[Investigación Reproducible con Quarto](https://geobota.github.io/xii-ccb-quarto/)», que estaremos ofreciendo en el [XII Congreso Colombiano de Botánica](https://congresobotanica.org).
+
+**Reproducibilidad**
+
+Los datos y los scripts utilizados para la elaboración de este Dashboard están disponibles en su correspondiente [repositorio de GitHub](https://github.com/geobota/dia-biologo-2024).
+
+**Agradecimientos**
+
+Agradecemos a `r glue::glue_collapse(vector_informantes, sep = ", ")` por haber participado completando la encuesta.
+
+**Licencia**
+
+Dashboard hecho por [\@alexespinosaco](https://alexespinosaco.github.io) usando {{< fa brands r-project >}} and [![](https://quarto.org/quarto.png){fig-alt="Quarto" width=65px}](https://quarto.org/) y está bajo una licencia [CC BY 4.0 {{< fa brands creative-commons >}}{{< fa brands creative-commons-by >}}](https://creativecommons.org/licenses/by/4.0/).
+
+# Inicio
+
+## Row
+
+```{r}
+#| content: valuebox
+#| title: "Informantes"
+list(
+  icon = "people",
+  color = "light",
+  value = length(vector_informantes)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Sexo femenino"
+list(
+  icon = "gender-female",
+  color = "light",
+  value = vectos_numero_femenino
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Edad mediana informantes"
+list(
+  icon = "cake",
+  color = "light",
+  value = mediana_edad
+)
+```
+
+## Row
+
+### Column
+
+```{r}
+#| title: "Nombre de las plantas"
+
+tbl_flextable_nombres_especies
+```
 
 ```{r}
 #| title: "Porcentaje de plantas conocidas"
+
 fig_porcentaje_especie
 ```
 
+### Column
+
 ```{r}
 #| title: "Porcentaje de usos por planta"
-fig_parte_usada_percent
+#| fig-dpi: 300
+#| fig-width: 8
+#| fig-height: 10
+
+fig_usos_percent
 ```
-
-```{r}
-#| title: "Otra forma de visualizar los usos por planta"
-ethnobotanyR::ethnoChord(
-    parte_usada_data,
-    by = "sp_name"
-  )
-```
-
-<!-- :::{.card titel="¡Síguenos para estar al tanto de los resultados!"} -->
-
-<!-- ![](geobota-social_qr.png) -->
-
-<!-- ::: -->

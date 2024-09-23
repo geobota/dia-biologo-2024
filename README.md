@@ -12,7 +12,7 @@ Los datos y los scripts utilizados para la elaboración de este Dashboard están
 
 **Agradecimientos**
 
-Agradecemos a `r glue::glue_collapse(vector_informantes, sep = ", ")` por haber participado completando la encuesta.
+Agradecemos a FACN, JFPM, JR, JSMS, JTT, LDHG, LFGV, LSMF, MBF, MGR, MHR, NAMN, SGU, SGV, SJMT, SMB, VF por haber participado completando la encuesta.
 
 **Licencia**
 

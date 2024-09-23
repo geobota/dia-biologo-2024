@@ -16,4 +16,4 @@ Agradecemos a `r glue::glue_collapse(vector_informantes, sep = ", ")` por haber 
 
 **Licencia**
 
-Dashboard hecho por [\@alexespinosaco](https://alexespinosaco.github.io) usando R and [![](https://quarto.org/quarto.png){fig-alt="Quarto" width=65px}](https://quarto.org/) y está bajo una licencia [CC BY 4.0 {{< fa brands creative-commons >}}{{< fa brands creative-commons-by >}}](https://creativecommons.org/licenses/by/4.0/).
+Dashboard hecho por [\@alexespinosaco](https://alexespinosaco.github.io) usando R and [Quarto](https://quarto.org/) y está bajo una licencia [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

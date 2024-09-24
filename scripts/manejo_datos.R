@@ -141,11 +141,11 @@ mediana_edad <-
 
 vector_labels_especies <-
   c(
-    "Papa sangre de sol" = "*Solanum tuberum var. indigena*",
+    "Papa sangre de sol" = "*Solanum tuberosum var. indigena*",
     "Papa criolla"       = "*Solanum phureja*",
-    "Mortiño"            = "*Tibouchina mollis*",
-    "Tomate chonto"      = "*Lycopersicon esculentum*",
-    "Tomate amarillo"    = "*Lycopersicon esculentum var. indet*",
+    "Mortiño"            = "*Vaccinium meridionale*",
+    "Tomate chonto"      = "*Solanum lycopersicum*",
+    "Tomate amarillo"    = "*Solanum lycopersicum var. indet*",
     "Balazo"             = "*Monstera deliciosa*",
     "Frijol cargamanto"  = "*Phaseolus vulgari*",
     "Frijol petaco"      = "*Phaseolus coccineus*"

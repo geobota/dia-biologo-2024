@@ -64,6 +64,7 @@ Los datos y los scripts utilizados para la elaboración de este Dashboard están
 **Agradecimientos**
 
 Agradecemos a `r glue::glue_collapse(vector_informantes, sep = ", ")` por haber participado completando la encuesta.
+Agracedemos a Bladimir Vera-Marín por haber proporcionado la encuesta original.
 
 **Licencia**
 
@@ -114,7 +115,7 @@ tbl_flextable_nombres_especies
 ```
 
 ```{r}
-#| title: "Porcentaje de plantas conocidas"
+#| title: "Porcentaje de plantas conocidas por los infomrmantes"
 
 fig_porcentaje_especie
 ```
@@ -129,3 +130,41 @@ fig_porcentaje_especie
 
 fig_usos_percent
 ```
+
+# Plantas
+
+## Row
+
+### Balazo (*Monstera deliciosa*)
+
+![Balazo (*Monstera deliciosa*). [La ciudad nos regala sabores](https://www.facebook.com/photo.php?fbid=2297769983657821)](imagenes/plantas/balazo.jpg)
+
+### Frijol petaco (*Phaseolus coccineus*)
+
+![Frijol petaco (*Phaseolus coccineus*).](imagenes/plantas/frijol_petaco.jpg)
+
+### Frijol cargamanto (*Phaseolus vulgari*)
+
+![Frijol cargamanto (*Phaseolus vulgari*). [Pixabay](https://pixabay.com/es/photos/borlotti-frijoles-seco-pulsos-628461/)](imagenes/plantas/frijol_cargamanto.jpg)
+
+### Tomate chonto (*Solanum lycopersicum*)
+
+![Tomate chonto (*Lycopersicon esculentum*). Pixabay](imagenes/plantas/tomate_chonto.jpg)
+
+## Row
+
+### Tomate amarillo (*Solanum lycopersicum var. indet*)
+
+![Tomate amarillo (*Lycopersicon esculentum var. indet*). [Expansión](https://www.expansion.com/fueradeserie/gastro/album/2019/09/18/5d778bc7e5fdea453c8b45a9_3.html)](imagenes/plantas/tomate_amarillo.jpg)
+
+### Papa sangre de sol (*Solanum tuberosum var. indigena*)
+
+![Papa sangre de sol"(*Solanum tuberum var. indigena*). [Daniela Echeverry](https://www.vice.com/es/article/hay-60-tipos-de-papa-que-los-colombianos-no-conociamos/)](imagenes/plantas/papa_sangre_sol.jpeg)
+
+### Papa criolla (*Solanum phureja*)
+
+![Papa criolla" (*Solanum phureja*). <a href="https://commons.wikimedia.org/wiki/File:Papa_criolla_1.jpg">Caldobasico</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>,](imagenes/plantas/papa_criolla.jpg)
+
+### Mortiño (*Vaccinium meridionale*)
+
+![Mortiño (*Vaccinium meridionale*). <a href="https://commons.wikimedia.org/wiki/File:Agraz..jpg">Fabiangamerogonzalez</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>,](imagenes/plantas/mortino.jpg)
